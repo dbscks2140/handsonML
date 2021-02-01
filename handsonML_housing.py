@@ -81,3 +81,9 @@ housing.plot(kind="scatter", x= "longitude", y = "latitude", alpha=0.4,s = housi
              label="population", figsize=(10,7),c="median_house_value",cmap=plt.get_cmap("jet"),colorbar=True,
              sharex=False)
 plt.legend()
+
+housing["rooms_per_household"]= housing["total_rooms"] / housing["households"]
+housing["bedrooms_per_room"] = housing["total_bedrooms"]/housing["total_rooms"]
+housing["population_per_household"]=housing["population"]/housing["households"]
+corr_matrix = housing.corr()
+corr_matrix["median_house_value"].sort_values(ascending=False)
